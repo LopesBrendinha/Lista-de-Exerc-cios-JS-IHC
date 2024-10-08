@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login da Brendinha</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <br>
+    <br>
+    <form id="meuFormulario">
+        <h1>O Numero Maior:</h1>
+        <label for="A">A:</label>
+        <input type="int" id="A" name="A">
+        <label for="B">B:</label>
+        <input type="int" id="B" name="B">
+        <button type="submit" onclick="maior()">Enviar</button>
+        <br>
+
+        <h1>A sua nota:</h1>
+        <label for="Nota">Nota:</label>
+        <input type="int" id="Nota" name="Nota">
+        <button type="submit" onclick="nota()">Enviar</button>
+        <br>
+
+        <h1>A sua média:</h1>
+        <label for="vetor">Vetor de números (separe os números com vírgulas):</label>
+        <input type="text" id="vetor" name="vetor">
+        <button type="submit" onclick="calcularMedia()">Calcular média</button>
+        <br>
+
+        <h1>Informe uma letra:</h1>
+        <label for="letra">Letra:</label>
+        <input type="text" id="letra" name="letra">
+        <button type="submit" onclick="exibirMensagem()">Exibir mensagem</button>
+        <br>
+
+        <h1>Informe uma matriz de números (separe os números com vírgulas):</h1>
+        <label for="matriz">Matriz:</label>
+        <input type="text" id="matriz" name="matriz">
+        <button type="submit" onclick="calcularSoma()">Calcular soma</button>
+        <br>
+
+        <h1>Informe um número:</h1>
+        <label for="numero">Número:</label>
+        <input type="number" id="numero" name="numero">
+        <button type="submit" onclick="calcularFatorial()">Calcular fatorial</button>
+        <br>
+
+        <h1>Escolha uma opção:</h1>
+        <label for="opcao">Opção:</label>
+        <select id="opcao" name="opcao">
+            <option value="1">1. Opção 1</option>
+            <option value="2">2. Opção 2</option>
+            <option value="3">3. Opção 3</option>
+        </select>
+        <button type="submit" onclick="escolherOpcao()">Escolher opção</button>
+        <br>
+
+        <h1>Informe um vetor de números (separe os números com vírgulas):</h1>
+        <label for="vetor">Vetor:</label>
+        <input type="text" id="vetor" name="vetor">
+        <button type="submit" onclick="encontrarMaiorNumero()">Encontrar maior número</button>
+        <br>
+        <h1>Informe uma matriz de números (separe os números com vírgulas):</h1>
+        <label for="matriz">Matriz:</label>
+        <input type="text" id="matriz" name="matriz">
+        <button type="submit" onclick="calcularMedia()">Calcular média</button>
+
+    </form>
+    
+    <script>
+        function maior(){
+            let a = document.getElementById('A').value;
+            let b = document.getElementById('B').value;
+            if (a === '' || b === '') {
+                alert('Preencha todos os campos');
+                return false;
+            }
+            if(a>=b){
+                alert(a);
+            }
+            else{
+                alert(b);
+            }
+        }
+
+        function nota(){
+            let nota =  document.getElementById('Nota').value;
+            if (nota === '') {
+                alert('Preencha todos os campos');
+                return false;
+            }
+            if(nota<6){
+                alert("Você está reprovado");
+            }else if(nota<8){
+                alert("Você está aprovado");
+            }else{
+                alert("Aprovado com louvor");
+            }
+
+        }
+        function calcularMedia() {
+            const vetor = document.getElementById('vetor').value.split(',');
+            const numeros = vetor.map(Number);
+
+            if (numeros.some(Number.isNaN)) {
+                alert('Preencha todos os campos com números válidos');
+                return false;
+            }
+
+            const soma = numeros.reduce((acc, current) => acc + current, 0);
+            const media = soma / numeros.length;
+
+            alert(`A média dos números é: ${media.toFixed(2)}`);
+        }
+
+        function exibirMensagem() {
+            const letra = document.getElementById('letra').value;
+
+            if (letra === 'a') {
+                alert('A');
+            } else if (letra === 'b') {
+                alert('B');
+            } else {
+                alert('Outra letra');
+            }
+        }
+
+        function calcularSoma() {
+            const matriz = document.getElementById('matriz').value.split(',');
+            const numeros = matriz.map(Number);
+
+            if (numeros.some(Number.isNaN)) {
+                alert('Preencha todos os campos com números válidos');
+                return false;
+            }
+
+            const soma = numeros.reduce((acc, current) => acc + current, 0);
+
+            alert(`A soma dos elementos é: ${soma}`);
+        }
+
+        function calcularFatorial() {
+            const num = parseInt(document.getElementById('numero').value);
+
+            if (num < 0) {
+                alert('O número deve ser positivo');
+                return false;
+            }
+
+            let fatorial = 1;
+
+            for (let i = 1; i <= num; i++) {
+                fatorial *= i;
+            }
+
+            alert(`O fatorial de ${num} é: ${fatorial}`);
+        }
+        function escolherOpcao() {
+            const opcao = document.getElementById('opcao').value;
+
+            switch (opcao) {
+                case '1':
+                alert('Opção 1 escolhida');
+                break;
+                case '2':
+                alert('Opção 2 escolhida');
+                break;
+                case '3':
+                alert('Opção 3 escolhida');
+                break;
+                default:
+                alert('Opção inválida');
+            }
+        }
+        function encontrarMaiorNumero() {
+            const vetor = document.getElementById('vetor').value.split(',');
+            const numeros = vetor.map(Number);
+
+            if (vetor.length === 0) {
+                alert('Preencha o campo com números válidos');
+                return false;
+            }
+
+            if (numeros.some(Number.isNaN)) {
+                alert('Preencha todos os campos com números válidos');
+                return false;
+            }
+
+            const maiorNumero = Math.max(...numeros);
+
+            alert(`O maior número é: ${maiorNumero}`);
+        }
+        function calcularMedia() {
+            const matriz = document.getElementById('matriz').value.split(',');
+            const numeros = matriz.map(Number);
+
+            if (numeros.some(Number.isNaN)) {
+                alert('Preencha todos os campos com números válidos');
+                return false;
+            }
+
+            const soma = numeros.reduce((acc, current) => acc + current, 0);
+            const media = soma / numeros.length;
+
+            alert(`A média é: ${media}`);
+        }
+    </script>
+</body>
+</html>
