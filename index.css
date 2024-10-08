@@ -1,0 +1,97 @@
+/* Estilos globais */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0, #ff5370);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Estilos do formulário */
+form {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+}
+
+label {
+    font-weight: bold;
+    color: #ff5370;
+}
+
+input[type="int"],
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 2px solid #ff5370;
+    border-radius: 10px;
+    background-color: #ffe1e7;
+    color: #333;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #ff69b4;
+    outline: none;
+    background-color: #ff85a2;
+}
+
+button {
+    background-color: #ff5370;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff85a2;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"]:hover {
+    background-color: #ff69b4;
+}
+
+/* Personalizando seleções */
+select {
+    appearance: none;
+    background-color: #ffe1e7;
+    padding: 12px;
+    color: #333;
+    border-radius: 10px;
+}
+
+/* Estilo para todos os elementos de entrada */
+input, select, button {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
